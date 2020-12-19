@@ -1,4 +1,9 @@
 // Assignment code here
+var pLength;
+var lowCase;
+var upCase;
+var numChar;
+var spChar;
 
 var psswdLength = function()
 {
@@ -10,7 +15,6 @@ var psswdLength = function()
     pLength = window.prompt("Invalid length! Please select the length of your password, it should have a MIN of 8 and a MAX of 128 characters.");
     psswdLength();
   }
-  return pLength;
 };
 
 var psswdCharType = function()
@@ -27,19 +31,42 @@ var psswdCharType = function()
   }
 };
 
-var concatDisplay = function()
+
+
+var pGenerator = function()
 {
-
-}
-
-
-
-//var type = [lowerCase, upperCase, numeric, special];
-
-//parseInt(length) = window.alert("Please select the length of your password, it should have a MIN of 8 characters and a MAX of 128.");
-//type = window.alert("Please select at LEAST ONE of the character types to include in your password: 1 LOWER-CASE, ");
-
-
+  var psswdRand = "";
+  var lowChar = 'abcdefghijklmnopqrstuvwxyz';
+  var upChar  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var numVal  = '0123456789';
+  var spVal   = '!"&()*+,%-./$:;<=>#?@[\]^_`{|}~';
+  
+  for (var i = 0; i < pLength; i++)
+  
+  {
+    debugger;
+    if (lowCase && i < pLength)
+    {
+      psswdRand += lowChar.charAt(Math.floor(Math.random()*10 + 16))
+      i++;
+    }
+    if(upChar && i < pLength)
+    {
+      psswdRand += upChar.charAt(Math.floor(Math.random()*10 + 16));
+      i++;
+    }
+    if (numChar && i < pLength)
+    {
+      psswdRand += numVal.charAt(Math.floor(Math.random()*10));
+      i++;
+    }
+    if (spChar && i < pLength)
+    {
+      psswdRand += spVal.charAt(Math.floor(Math.random()*10 + 21));
+    }
+  }
+  console.log(psswdRand);
+};
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -58,3 +85,4 @@ generateBtn.addEventListener("click", writePassword);
 
 psswdLength();
 psswdCharType();
+pGenerator();
