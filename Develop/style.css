@@ -86,6 +86,10 @@ header {
   padding: 14px 34px;
   text-align: center;
   cursor: pointer;
+  outline:none;
+}
+.btn:hover {  
+  background-color: rgb(238, 176, 6);
 }
 
 button[disabled] {

@@ -1,11 +1,13 @@
 // Assignment code here
+
+// Global variables declaration.
 var pLength;
 var lowCase;
 var upCase;
 var numChar;
 var spChar;
-var psswdRand;
 
+// Function to validate the password's min and max length.
 var psswdLength = function()
 {
   pLength = window.prompt("Please select the length of your password, it should have a MIN of 8 characters and a MAX of 128.");
@@ -18,29 +20,31 @@ var psswdLength = function()
         pLength = window.prompt("Invalid length! Please select the length of your password, it should have a MIN of 8 and a MAX of 128 characters.");
         psswdLength();
       }
-    psswdCharType();
+    psswdCharType();  // Next function call: to input the character types
   }
   else
   {
-    window.alert("Goodbye!")
+    window.alert("Goodbye!")  // the user can abort the process at the start if does not wish to continue.
   }
 };
 
-  var psswdCharType = function()
+// function that allows selection and validation of character types.
+var psswdCharType = function()
+{
+  lowCase = window.confirm("Do you want to include LOWERCASE characters? Please click 'OK' for yes or cancel for 'NO'");
+  upCase = window.confirm("Do you want to include UPPERCASE characters? Please click 'OK' for yes or cancel for 'NO'");
+  numChar = window.confirm("Do you want to include NUMERIC characters? Please click 'OK' for yes or cancel for 'NO'");
+  spChar = window.confirm("Do you want to include SPECIAL characters? Please click 'OK' for yes or cancel for 'NO'");
+
+  if (lowCase != true && upCase != true && numChar != true && spChar != true )
   {
-    lowCase = window.confirm("Do you want to include LOWERCASE characters? Please click 'OK' for yes or cancel for 'NO'");
-    upCase = window.confirm("Do you want to include UPPERCASE characters? Please click 'OK' for yes or cancel for 'NO'");
-    numChar = window.confirm("Do you want to include NUMERIC characters? Please click 'OK' for yes or cancel for 'NO'");
-    spChar = window.confirm("Do you want to include SPECIAL characters? Please click 'OK' for yes or cancel for 'NO'");
+    window.alert("Please choose at least ONE of these options");
+    psswdCharType();
+  }
+  writePassword()  // calls the write to textarea function(supplied) which in turn calls the password generator function.
+};
 
-    if (lowCase != true && upCase != true && numChar != true && spChar != true )
-    {
-      window.alert("Please choose at least ONE of these options");
-      psswdCharType();
-    }
-    writePassword()
-  };
-
+// password generator function
 var pGenerator = function()
 {
   var psswdRand = "";
@@ -73,7 +77,6 @@ var pGenerator = function()
       i++;
     }
   }
-  window.alert("Your password is : " + psswdRand);
   return psswdRand;
 };
 
@@ -81,15 +84,16 @@ var pGenerator = function()
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-function writePassword() {
-  var password =  pGenerator();//generatePassword();
+function writePassword() 
+{
+  var password =  pGenerator(); // the password value is returned by the password generator function to be sent to textarea.
   var passwordText = document.querySelector("#password");
 
   passwordText.value =  password;
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", psswdLength);
+generateBtn.addEventListener("click", psswdLength); // on click: call the starting function: psswdLength.
 
 
 
