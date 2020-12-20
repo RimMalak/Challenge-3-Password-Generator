@@ -10,14 +10,14 @@ var spChar;
 // Function to validate the password's min and max length.
 var psswdLength = function()
 {
-  pLength = window.prompt("Please select the length of your password, it should have a MIN of 8 characters and a MAX of 128.");
+  pLength = window.prompt("Please select the length of your password, MIN of 8 characters and MAX of 128.");
   if (pLength)
   {
     pLength = parseInt(pLength);
 
     if (pLength < 8 || pLength > 128)
       {
-        pLength = window.prompt("Invalid length! Please select the length of your password, it should have a MIN of 8 and a MAX of 128 characters.");
+        pLength = window.prompt("Invalid length! Please select the length of your password, MIN of 8 and MAX of 128 characters.");
         psswdLength();
       }
     psswdCharType();  // Next function call: to input the character types
@@ -31,10 +31,10 @@ var psswdLength = function()
 // function that allows selection and validation of character types.
 var psswdCharType = function()
 {
-  lowCase = window.confirm("Do you want to include LOWERCASE characters? Please click 'OK' for yes or cancel for 'NO'");
-  upCase = window.confirm("Do you want to include UPPERCASE characters? Please click 'OK' for yes or cancel for 'NO'");
-  numChar = window.confirm("Do you want to include NUMERIC characters? Please click 'OK' for yes or cancel for 'NO'");
-  spChar = window.confirm("Do you want to include SPECIAL characters? Please click 'OK' for yes or cancel for 'NO'");
+  lowCase = window.confirm("Include LOWERCASE characters?  Click 'OK' for yes or cancel for 'NO'");
+  upCase = window.confirm("Include UPPERCASE characters?  Click 'OK' for yes or cancel for 'NO'");
+  numChar = window.confirm("Include NUMERIC characters? Click 'OK' for yes or cancel for 'NO'");
+  spChar = window.confirm("Include SPECIAL characters? Click 'OK' for yes or cancel for 'NO'");
 
   if (lowCase != true && upCase != true && numChar != true && spChar != true )
   {
